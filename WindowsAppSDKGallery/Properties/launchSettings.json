@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "WindowsAppSDKGallery": {
+      "commandName": "MsixPackage"
+    }
+  }
+}

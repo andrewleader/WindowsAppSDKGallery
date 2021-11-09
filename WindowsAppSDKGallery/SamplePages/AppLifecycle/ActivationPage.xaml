@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="WindowsAppSDKGallery.SamplePages.AppLifecycle.ActivationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WindowsAppSDKGallery.SamplePages.AppLifecycle"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:controls="using:WindowsAppSDKGallery.Controls">
+
+    <StackPanel>
+
+        <controls:ApiExample
+            x:Name="GetActivation"
+            HeaderText="Get activated event args"
+            Api="AppInstance.GetCurrent().GetActivatedEventArgs()"
+            ExecuteApi="GetActivation_ExecuteApi"/>
+
+    </StackPanel>
+</Page>

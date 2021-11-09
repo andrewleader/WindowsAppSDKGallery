@@ -1,0 +1,30 @@
+﻿<UserControl
+    x:Class="WindowsAppSDKGallery.Controls.ApiExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WindowsAppSDKGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <local:SampleExample HeaderText="{x:Bind HeaderText}">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="ApiParts" Orientation="Horizontal"/>
+                <Button
+                    x:Name="ButtonExecuteApi"
+                    Content="Execute API"
+                    Click="ButtonExecuteApi_Click"/>
+            </StackPanel>
+            <ContentControl
+                Visibility="{x:Bind CustomOutput, Mode=OneWay, Converter={StaticResource NotNullToVisibilityConverter}}"
+                Content="{x:Bind CustomOutput, Mode=OneWay}"/>
+            <TextBox
+                Visibility="{x:Bind Output, Mode=OneWay, Converter={StaticResource NotNullToVisibilityConverter}}"
+                IsReadOnly="True"
+                TextWrapping="Wrap"
+                MinHeight="60"
+                Text="{x:Bind Output, Mode=OneWay}"/>
+        </StackPanel>
+    </local:SampleExample>
+</UserControl>

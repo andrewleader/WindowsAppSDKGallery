@@ -1,0 +1,78 @@
+﻿<UserControl
+    x:Class="WindowsAppSDKGallery.Controls.SampleExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WindowsAppSDKGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    HorizontalContentAlignment="Stretch">
+
+    <StackPanel>
+        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,15" Text="{x:Bind HeaderText}" />
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid
+                x:Name="ExampleContainer"
+                x:FieldModifier="Public"
+                BorderBrush="{ThemeResource SystemControlBackgroundListLowBrush}"
+                BorderThickness="1"
+                Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" MaxWidth="320" />
+                </Grid.ColumnDefinitions>
+
+                <!--  Example Display  -->
+                <ContentPresenter
+                    x:Name="ControlPresenter"
+                    Padding="12"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    HorizontalContentAlignment="{x:Bind HorizontalContentAlignment}"
+                    Content="{x:Bind Example}" />
+
+                <!--  Options Display  -->
+                <!--<ContentPresenter
+                    x:Name="OptionsPresenter"
+                    Grid.Column="1"
+                    Margin="0,12,12,12"
+                    Padding="16"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}"
+                    Content="{x:Bind Options}"
+                    Visibility="{x:Bind Options, Converter={StaticResource nullToVisibilityConverter}}" />-->
+            </Grid>
+
+            <!--  XAML display  -->
+            <!--<ScrollViewer
+                Grid.Row="1"
+                Background="{ThemeResource SystemControlPageBackgroundListLowBrush}"
+                HorizontalScrollBarVisibility="Auto"
+                HorizontalScrollMode="Auto"
+                VerticalScrollBarVisibility="Disabled"
+                VerticalScrollMode="Disabled">
+                <StackPanel>
+                    <ContentPresenter
+                        x:Name="XamlPresenter"
+                        Loaded="XamlPresenter_Loaded"
+                        Margin="16,20" />
+                    <ContentPresenter
+                        x:Name="CSharpPresenter"
+                        Loaded="CSharpPresenter_Loaded"
+                        Margin="16,20" />
+                </StackPanel>
+            </ScrollViewer>-->
+        </Grid>
+    </StackPanel>
+</UserControl>

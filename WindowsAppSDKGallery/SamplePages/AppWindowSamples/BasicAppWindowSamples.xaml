@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="WindowsAppSDKGallery.SamplePages.AppWindowSamples.BasicAppWindowSamples"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WindowsAppSDKGallery.SamplePages.AppWindowSamples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:WindowsAppSDKGallery.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel>
+
+        <controls:ApiExample
+            x:Name="MoveWindow"
+            HeaderText="Move your window"
+            Api="appWindow.Move(new PointInt32($x, $y))"
+            ExecuteApi="MoveWindow_ExecuteApi"/>
+
+        <controls:ApiExample
+            x:Name="ResizeWindow"
+            HeaderText="Resize your window"
+            Api="appWindow.Resize(new SizeInt32($width, $height))"
+            ExecuteApi="ResizeWindow_ExecuteApi"/>
+
+    </StackPanel>
+</Page>
