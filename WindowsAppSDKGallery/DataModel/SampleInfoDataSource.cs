@@ -112,6 +112,19 @@ namespace WindowsAppSDKGallery.DataModel
                         PageType = typeof(SamplePages.AppLifecycle.PowerManagerPage)
                     }
                 }
+            },
+
+            new SampleInfoDataGroup
+            {
+                Title = "Media",
+                Items =
+                {
+                    new SampleInfoDataItem
+                    {
+                        Title = "Play videos",
+                        PageType = typeof(SamplePages.MediaSamples.PlayVideosPage)
+                    }
+                }
             }
         };
     }

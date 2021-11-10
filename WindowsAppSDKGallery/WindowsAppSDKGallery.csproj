@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
@@ -21,6 +21,7 @@
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Assets\AdaptiveIntroVideo.mp4" />
     <None Remove="Controls\ApiExample.xaml" />
     <None Remove="Controls\ObjectControl.xaml" />
     <None Remove="Controls\ObjectControlHelpers\BaseObjectControl.xaml" />
@@ -34,6 +35,7 @@
     <None Remove="SamplePages\AppLifecycle\ManageInstancesPage.xaml" />
     <None Remove="SamplePages\AppLifecycle\PowerManagerPage.xaml" />
     <None Remove="SamplePages\AppWindowSamples\BasicAppWindowSamples.xaml" />
+    <None Remove="SamplePages\MediaSamples\PlayVideosPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -129,6 +131,12 @@
 
   <ItemGroup>
     <Page Update="Controls\ObjectControlHelpers\ListObjectControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="SamplePages\MediaPages\PlayVideosPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
