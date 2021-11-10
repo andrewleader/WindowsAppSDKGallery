@@ -17,17 +17,22 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Debug|arm64.ActiveCfg = Debug|arm64
 		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Debug|arm64.Build.0 = Debug|arm64
+		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Debug|arm64.Deploy.0 = Debug|arm64
 		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Debug|x64.ActiveCfg = Debug|x64
 		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Debug|x64.Build.0 = Debug|x64
 		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Debug|x64.Deploy.0 = Debug|x64
 		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Debug|x86.ActiveCfg = Debug|x86
 		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Debug|x86.Build.0 = Debug|x86
+		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Debug|x86.Deploy.0 = Debug|x86
 		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Release|arm64.ActiveCfg = Release|arm64
 		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Release|arm64.Build.0 = Release|arm64
+		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Release|arm64.Deploy.0 = Release|arm64
 		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Release|x64.ActiveCfg = Release|x64
 		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Release|x64.Build.0 = Release|x64
+		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Release|x64.Deploy.0 = Release|x64
 		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Release|x86.ActiveCfg = Release|x86
 		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Release|x86.Build.0 = Release|x86
+		{1DF4D01D-EAF0-412B-AE1C-5CF74E17DF16}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
