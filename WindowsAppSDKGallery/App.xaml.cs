@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -49,16 +50,23 @@ namespace WindowsAppSDKGallery
             m_window.Activate();
         }
 
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool SetForegroundWindow(IntPtr hWnd);
+
         private void App_Activated(object sender, Microsoft.Windows.AppLifecycle.AppActivationArguments e)
         {
             // Bring the window to the foreground... first get the window handle...
-            var hwnd = (Windows.Win32.Foundation.HWND)WinRT.Interop.WindowNative.GetWindowHandle(m_window);
+            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(m_window);
 
-            // Restore window if minimized... requires Microsoft.Windows.CsWin32 NuGet package and a NativeMethods.txt file with ShowWindow method
-            Windows.Win32.PInvoke.ShowWindow(hwnd, Windows.Win32.UI.WindowsAndMessaging.SHOW_WINDOW_CMD.SW_RESTORE);
+            // Restore window if minimized... requires DLL import above
+            ShowWindow(hwnd, 0x00000009);
 
-            // And call SetForegroundWindow... requires Microsoft.Windows.CsWin32 NuGet package and a NativeMethods.txt file with SetForegroundWindow method
-            Windows.Win32.PInvoke.SetForegroundWindow(hwnd);
+            // And call SetForegroundWindow... requires DLL import above
+            SetForegroundWindow(hwnd);
         }
 
         private static Window m_window;
