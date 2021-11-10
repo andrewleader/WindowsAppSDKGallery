@@ -59,7 +59,14 @@ namespace WindowsAppSDKGallery.Controls
                 return;
             }
 
-            if (Object is IEnumerable)
+            if (Object.GetType().IsEnum)
+            {
+                Content = new EnumObjectControl()
+                {
+                    Object = Object
+                };
+            }
+            else if (Object is IEnumerable)
             {
                 Content = new ListObjectControl()
                 {

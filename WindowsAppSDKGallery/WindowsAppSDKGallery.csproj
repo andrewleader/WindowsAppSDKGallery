@@ -15,6 +15,7 @@
     <None Remove="Controls\ApiExample.xaml" />
     <None Remove="Controls\ObjectControl.xaml" />
     <None Remove="Controls\ObjectControlHelpers\BaseObjectControl.xaml" />
+    <None Remove="Controls\ObjectControlHelpers\EnumObjectControl.xaml" />
     <None Remove="Controls\ObjectControlHelpers\ExceptionObjectControl.xaml" />
     <None Remove="Controls\ObjectControlHelpers\ListObjectControl.xaml" />
     <None Remove="Controls\ObjectControlHelpers\NullObjectControl.xaml" />
@@ -22,6 +23,7 @@
     <None Remove="Pages\SamplePage.xaml" />
     <None Remove="SamplePages\AppLifecycle\ActivationPage.xaml" />
     <None Remove="SamplePages\AppLifecycle\ManageInstancesPage.xaml" />
+    <None Remove="SamplePages\AppLifecycle\PowerManagerPage.xaml" />
     <None Remove="SamplePages\AppWindowSamples\BasicAppWindowSamples.xaml" />
   </ItemGroup>
 
@@ -48,6 +50,18 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0-preview3" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.20348.19" />
     <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\ObjectControlHelpers\EnumObjectControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="SamplePages\AppLifecycle\PowerManagerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

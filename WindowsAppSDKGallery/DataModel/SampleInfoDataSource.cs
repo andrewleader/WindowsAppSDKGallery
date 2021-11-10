@@ -104,6 +104,12 @@ namespace WindowsAppSDKGallery.DataModel
                     {
                         Title = "Manage instances",
                         PageType = typeof(SamplePages.AppLifecycle.ManageInstancesPage)
+                    },
+
+                    new SampleInfoDataItem
+                    {
+                        Title = "Power management",
+                        PageType = typeof(SamplePages.AppLifecycle.PowerManagerPage)
                     }
                 }
             }
