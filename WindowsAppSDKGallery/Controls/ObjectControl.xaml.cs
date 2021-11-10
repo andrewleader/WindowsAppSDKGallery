@@ -59,7 +59,7 @@ namespace WindowsAppSDKGallery.Controls
                 return;
             }
 
-            if (Object.GetType().IsEnum)
+            if (Object.GetType().IsEnum || !Object.GetType().IsClass)
             {
                 Content = new EnumObjectControl()
                 {
