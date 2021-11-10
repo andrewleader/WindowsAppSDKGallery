@@ -31,6 +31,7 @@ namespace WindowsAppSDKGallery
             this.InitializeComponent();
 
             AddNavigationMenuItems();
+            SetUnselected();
         }
 
         private void AddNavigationMenuItems()
@@ -58,8 +59,19 @@ namespace WindowsAppSDKGallery
             if (sample != null)
             {
                 NavigationViewControl.Header = sample;
+                rootFrame.Visibility = Visibility.Visible;
                 rootFrame.Navigate(typeof(SamplePage), sample);
             }
+            else
+            {
+                SetUnselected();
+            }
+        }
+
+        private void SetUnselected()
+        {
+            NavigationViewControl.Header = "Select a sample on the left.";
+            rootFrame.Visibility = Visibility.Collapsed;
         }
     }
 }
