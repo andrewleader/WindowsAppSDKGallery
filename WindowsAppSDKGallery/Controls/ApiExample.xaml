@@ -16,6 +16,8 @@
                     Content="Execute API"
                     Click="ButtonExecuteApi_Click"/>
             </StackPanel>
+            <local:ObjectControl
+                Object="{x:Bind ReturnedObject, Mode=OneWay}"/>
             <ContentControl
                 Visibility="{x:Bind CustomOutput, Mode=OneWay, Converter={StaticResource NotNullToVisibilityConverter}}"
                 Content="{x:Bind CustomOutput, Mode=OneWay}"/>

@@ -130,6 +130,20 @@ namespace WindowsAppSDKGallery.Controls
 
 
 
+
+        public object ReturnedObject
+        {
+            get { return (object)GetValue(ReturnedObjectProperty); }
+            set { SetValue(ReturnedObjectProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ReturnedObject.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ReturnedObjectProperty =
+            DependencyProperty.Register("ReturnedObject", typeof(object), typeof(ApiExample), new PropertyMetadata(ObjectControl.UnsetObj));
+
+
+
+
         private void ButtonExecuteApi_Click(object sender, RoutedEventArgs e)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
@@ -139,7 +153,14 @@ namespace WindowsAppSDKGallery.Controls
                 parameters[child.PlaceholderText] = child.Text;
             }
 
-            ExecuteApi?.Invoke(this, new ExecuteApiArgs(parameters));
+            try
+            {
+                ExecuteApi?.Invoke(this, new ExecuteApiArgs(parameters));
+            }
+            catch (Exception ex)
+            {
+                ReturnedObject = ex;
+            }
         }
     }
 

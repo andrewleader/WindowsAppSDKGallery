@@ -7,38 +7,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:WindowsAppSDKGallery.Controls"
     mc:Ignorable="d"
+    x:Name="ThisPage"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
         <DataTemplate x:Key="InstanceTemplate">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-
-                <RichTextBlock>
-                    <Paragraph>
-                        <Run Text="ProcessId: "/>
-                        <Run Text="{Binding ProcessId}"/>
-                    </Paragraph>
-                    <Paragraph>
-                        <Run Text="IsCurrent: "/>
-                        <Run Text="{Binding IsCurrent}"/>
-                    </Paragraph>
-                    <Paragraph>
-                        <Run Text="Key: "/>
-                        <Run Text="{Binding Key}"/>
-                    </Paragraph>
-                </RichTextBlock>
-
-                <StackPanel Grid.Column="1">
-                    <Button
-                        x:Name="ButtonRedirectTo"
-                        Content="Redirect activation to this process"
-                        Click="ButtonRedirectTo_Click"/>
-                </StackPanel>
-            </Grid>
+            <controls:ObjectControl Object="{Binding}"/>
         </DataTemplate>
     </Page.Resources>
 
@@ -48,21 +22,12 @@
             HeaderText="Get running instances"
             Api="AppInstance.GetInstances()"
             ExecuteApi="GetInstances_ExecuteApi">
-            <ListView
-                x:Name="GetInstancesResult"
-                SelectionMode="None"
-                ItemTemplate="{StaticResource InstanceTemplate}"/>
         </controls:ApiExample>
 
         <controls:ApiExample
             x:Name="FindInstance"
             HeaderText="Find or register an instance"
             Api="AppInstance.FindOrRegisterForKey($key)"
-            ExecuteApi="FindInstance_ExecuteApi">
-            <ContentControl
-                x:Name="FindInstanceResult"
-                ContentTemplate="{StaticResource InstanceTemplate}"
-                Visibility="{Binding Content, ElementName=FindInstanceResult, Converter={StaticResource NotNullToVisibilityConverter}}"/>
-        </controls:ApiExample>
+            ExecuteApi="FindInstance_ExecuteApi"/>
     </StackPanel>
 </Page>

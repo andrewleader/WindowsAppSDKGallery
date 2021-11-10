@@ -34,17 +34,7 @@ namespace WindowsAppSDKGallery.SamplePages.AppLifecycle
         {
             var instances = AppInstance.GetInstances();
 
-            var output = "Count: " + instances.Count;
-
-            GetInstancesResult.ItemsSource = instances.ToList();
-            GetInstances.Output = output;
-        }
-
-        private static string InstanceToString(AppInstance instance)
-        {
-            return $@"ProcessId: ${instance.ProcessId}
-IsCurrent: ${instance.IsCurrent}
-Key: ${instance.Key}";
+            GetInstances.ReturnedObject = instances.ToList();
         }
 
         private void FindInstance_ExecuteApi(object sender, ExecuteApiArgs e)
@@ -52,16 +42,7 @@ Key: ${instance.Key}";
             var key = e.Parameters["key"];
 
             var instance = AppInstance.FindOrRegisterForKey(key);
-            FindInstanceResult.Content = instance;
-        }
-
-        private async void ButtonRedirectTo_Click(object sender, RoutedEventArgs e)
-        {
-            var button = (sender as Button);
-            var instance = button.DataContext as AppInstance;
-            button.IsEnabled = false;
-            await instance.RedirectActivationToAsync(AppInstance.GetCurrent().GetActivatedEventArgs());
-            button.IsEnabled = true;
+            FindInstance.ReturnedObject = instance;
         }
     }
 }

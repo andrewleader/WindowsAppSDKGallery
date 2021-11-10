@@ -13,6 +13,11 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Controls\ApiExample.xaml" />
+    <None Remove="Controls\ObjectControl.xaml" />
+    <None Remove="Controls\ObjectControlHelpers\BaseObjectControl.xaml" />
+    <None Remove="Controls\ObjectControlHelpers\ExceptionObjectControl.xaml" />
+    <None Remove="Controls\ObjectControlHelpers\ListObjectControl.xaml" />
+    <None Remove="Controls\ObjectControlHelpers\NullObjectControl.xaml" />
     <None Remove="Controls\SampleExample.xaml" />
     <None Remove="Pages\SamplePage.xaml" />
     <None Remove="SamplePages\AppLifecycle\ActivationPage.xaml" />
@@ -46,8 +51,30 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="Controls\ObjectControlHelpers\ExceptionObjectControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\ObjectControlHelpers\NullObjectControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\ObjectControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Update="Controls\ApiExample.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Controls\ObjectControlHelpers\BaseObjectControl.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
 
@@ -77,6 +104,12 @@
 
   <ItemGroup>
     <Page Update="SamplePages\AppWindowSamples\BasicAppWindowSamples.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\ObjectControlHelpers\ListObjectControl.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
