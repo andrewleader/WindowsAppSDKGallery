@@ -15,5 +15,10 @@
             HeaderText="Check screen status"
             Api="PowerManager.DisplayStatus"
             ExecuteApi="CheckScreenStatus_ExecuteApi"/>
+        <controls:ApiExample
+            x:Name="EffectivePowerModeExample"
+            HeaderText="Check effective power mode"
+            Api="PowerManager.EffectivePowerMode"
+            ExecuteApi="EffectivePowerModeExample_ExecuteApi"/>
     </StackPanel>
 </Page>

@@ -33,5 +33,10 @@ namespace WindowsAppSDKGallery.SamplePages.AppLifecycle
         {
              CheckScreenStatus.ReturnedObject = PowerManager.DisplayStatus;
         }
+
+        private async void EffectivePowerModeExample_ExecuteApi(object sender, Controls.ExecuteApiArgs e)
+        {
+            EffectivePowerModeExample.ReturnedObject = await PowerManager.EffectivePowerMode;
+        }
     }
 }
