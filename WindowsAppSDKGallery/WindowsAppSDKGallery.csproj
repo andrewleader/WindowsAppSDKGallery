@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
@@ -6,7 +6,7 @@
     <RootNamespace>WindowsAppSDKGallery</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;arm64</Platforms>
-    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <RuntimeIdentifiers>win10-x86;win10-x64</RuntimeIdentifiers>
     <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
@@ -22,6 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Assets\AdaptiveIntroVideo.mp4" />
+    <None Remove="Assets\msicon.ico" />
     <None Remove="Controls\ApiExample.xaml" />
     <None Remove="Controls\ObjectControl.xaml" />
     <None Remove="Controls\ObjectControlHelpers\BaseObjectControl.xaml" />
@@ -36,6 +37,7 @@
     <None Remove="SamplePages\AppLifecycle\PowerManagerPage.xaml" />
     <None Remove="SamplePages\AppWindowSamples\BasicAppWindowSamples.xaml" />
     <None Remove="SamplePages\MediaSamples\PlayVideosPage.xaml" />
+    <None Remove="SamplePages\SystemTraySamples\SystemTrayIconPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +56,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
@@ -136,6 +139,12 @@
 
   <ItemGroup>
     <Page Update="SamplePages\MediaPages\PlayVideosPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="SamplePages\SystemTraySamples\SystemTrayIconPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

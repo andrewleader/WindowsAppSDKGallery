@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="WindowsAppSDKGallery.SamplePages.SystemTraySamples.SystemTrayIconPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WindowsAppSDKGallery.SamplePages.SystemTraySamples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:WindowsAppSDKGallery.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel>
+
+        <controls:SampleExample
+            HeaderText="Show a system tray notification icon">
+
+            <StackPanel>
+                <RichTextBlock>
+                    <Paragraph>
+                        Uses the third-party
+                        <Hyperlink NavigateUri="https://github.com/hardcodet/wpf-notifyicon">Hardcodet NotifyIcon library</Hyperlink> to create a system tray notification icon from a WinUI 3 app. Use the button to show the icon (a Microsoft icon), and then try clicking the notification icon to perform additional actions.
+                    </Paragraph>
+                </RichTextBlock>
+
+                <Button
+                    x:Name="ButtonShowHide"
+                    Content="Show icon"
+                    Click="ButtonShowHide_Click"
+                    Margin="0, 12, 0, 0"/>
+            </StackPanel>
+
+        </controls:SampleExample>
+
+    </StackPanel>
+</Page>

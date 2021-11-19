@@ -1,21 +1,5 @@
 ﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Microsoft.UI.Xaml.Shapes;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using WindowsAppSDKGallery.Helpers;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -50,23 +34,9 @@ namespace WindowsAppSDKGallery
             m_window.Activate();
         }
 
-        [DllImport("user32.dll")]
-        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
-        [DllImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        static extern bool SetForegroundWindow(IntPtr hWnd);
-
         private void App_Activated(object sender, Microsoft.Windows.AppLifecycle.AppActivationArguments e)
         {
-            // Bring the window to the foreground... first get the window handle...
-            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(m_window);
-
-            // Restore window if minimized... requires DLL import above
-            ShowWindow(hwnd, 0x00000009);
-
-            // And call SetForegroundWindow... requires DLL import above
-            SetForegroundWindow(hwnd);
+            WindowHelper.ShowWindow(m_window);
         }
 
         private static Window m_window;

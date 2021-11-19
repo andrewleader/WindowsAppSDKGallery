@@ -125,6 +125,19 @@ namespace WindowsAppSDKGallery.DataModel
                         PageType = typeof(SamplePages.MediaSamples.PlayVideosPage)
                     }
                 }
+            },
+
+            new SampleInfoDataGroup
+            {
+                Title = "System tray",
+                Items =
+                {
+                    new SampleInfoDataItem
+                    {
+                        Title = "Show notification icon",
+                        PageType = typeof(SamplePages.SystemTraySamples.SystemTrayIconPage)
+                    }
+                }
             }
         };
     }
