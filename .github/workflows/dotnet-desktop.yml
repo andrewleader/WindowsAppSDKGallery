@@ -69,7 +69,7 @@ jobs:
       uses: mingjun97/file-regex-replace@v1
       with:
         regex: 'Version="([0-9\.]*)"'
-        replacement: 'Version="0.${{ github.run_id }}.${{ github.run_attempt }}.0"'
+        replacement: 'Version="0.${{ github.run_number }}.${{ github.run_attempt }}.0"'
         include: Package.appxmanifest
 
 
