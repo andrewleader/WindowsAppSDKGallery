@@ -64,6 +64,14 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
+        
+    - name: File Regex Replace
+      uses: mingjun97/file-regex-replace@v1
+      with:
+        regex: 'Version="([0-9\.]*)"'
+        replacement: 'Version="0.${{ env.github.run_id }}.${{ env.github.run_attempt }}.0"'
+        include: Package.appxmanifest
+
 
     # Install the .NET Core workload
     - name: Install .NET Core
