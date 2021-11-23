@@ -12,6 +12,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Security.Credentials;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -30,6 +31,14 @@ namespace WindowsAppSDKGallery.Controls.ObjectControlHelpers
                 async i =>
                 {
                     await (i as Microsoft.Windows.AppLifecycle.AppInstance).RedirectActivationToAsync(Microsoft.Windows.AppLifecycle.AppInstance.GetCurrent().GetActivatedEventArgs());
+                });
+
+            AddResolver(
+                typeof(PasswordCredential),
+                nameof(PasswordVault.Remove),
+                i =>
+                {
+                    new PasswordVault().Remove(i as PasswordCredential);
                 });
         }
 
@@ -59,6 +68,16 @@ namespace WindowsAppSDKGallery.Controls.ObjectControlHelpers
             }
 
             return null;
+        }
+
+        public static IEnumerable<string> GetResolverMethods(Type type)
+        {
+            if (Resolvers.TryGetValue(type, out Dictionary<string, Action<object>> methods))
+            {
+                return methods.Keys;
+            }
+
+            return new string[0];
         }
     }
 
@@ -105,6 +124,7 @@ namespace WindowsAppSDKGallery.Controls.ObjectControlHelpers
         private void ButtonMethods_Click(object sender, RoutedEventArgs e)
         {
             MenuFlyout flyout = new MenuFlyout();
+            HashSet<string> consumedMethods = new HashSet<string>();
 
             foreach (var method in Object.GetType().GetMethods().Where(i => i.Name != "GetHashCode" && !i.IsStatic && !i.IsSpecialName && i.DeclaringType == Object.GetType() && (i.GetParameters().Length == 0 || ObjectMethodResolvers.HasResolver(Object.GetType(), i.Name))))
             {
@@ -126,6 +146,25 @@ namespace WindowsAppSDKGallery.Controls.ObjectControlHelpers
                 };
 
                 flyout.Items.Add(menuItem);
+                consumedMethods.Add(method.Name);
+            }
+
+            foreach (var method in ObjectMethodResolvers.GetResolverMethods(Object.GetType()))
+            {
+                if (consumedMethods.Add(method))
+                {
+                    var menuItem = new MenuFlyoutItem
+                    {
+                        Text = method + "()"
+                    };
+
+                    menuItem.Click += delegate
+                    {
+                        ObjectMethodResolvers.GetResolver(Object.GetType(), method).Invoke(Object);
+                    };
+
+                    flyout.Items.Add(menuItem);
+                }
             }
 
             flyout.ShowAt(ButtonMethods);

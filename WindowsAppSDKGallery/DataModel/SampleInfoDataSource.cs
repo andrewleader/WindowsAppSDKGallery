@@ -125,6 +125,19 @@ namespace WindowsAppSDKGallery.DataModel
                         PageType = typeof(SamplePages.MediaSamples.PlayVideosPage)
                     }
                 }
+            },
+
+            new SampleInfoDataGroup
+            {
+                Title = "Auth & user identity",
+                Items =
+                {
+                    new SampleInfoDataItem
+                    {
+                        Title = "Credential locker",
+                        PageType = typeof(SamplePages.CredentialLockerSamples.CredentialLockerPage)
+                    }
+                }
             }
         };
     }

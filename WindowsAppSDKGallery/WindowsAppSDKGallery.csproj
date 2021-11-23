@@ -35,6 +35,7 @@
     <None Remove="SamplePages\AppLifecycle\ManageInstancesPage.xaml" />
     <None Remove="SamplePages\AppLifecycle\PowerManagerPage.xaml" />
     <None Remove="SamplePages\AppWindowSamples\BasicAppWindowSamples.xaml" />
+    <None Remove="SamplePages\CredentialLockerSamples\CredentialLockerPage.xaml" />
     <None Remove="SamplePages\MediaSamples\PlayVideosPage.xaml" />
   </ItemGroup>
 
@@ -136,6 +137,12 @@
 
   <ItemGroup>
     <Page Update="SamplePages\MediaPages\PlayVideosPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="SamplePages\CredentialLockerSamples\CredentialLockerPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
