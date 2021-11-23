@@ -117,3 +117,15 @@ jobs:
       with:
         name: MSIX Package
         path: WindowsAppSDKGallery/Packages/**/WindowsAppSDKGallery*.msix
+        
+
+    - name: Create GH release
+      uses: softprops/action-gh-release@v1
+      with:
+        draft: false
+        prerelease: false
+        name: '0.${{ github.run_number }}.${{ github.run_attempt }}.0'
+        tag_name: ${{ github.ref }}
+        body: 'Version 0.${{ github.run_number }}.${{ github.run_attempt }}.0'
+        files: WindowsAppSDKGallery/Packages/**/WindowsAppSDKGallery*.msix
+        fail_on_unmatched_files: true
