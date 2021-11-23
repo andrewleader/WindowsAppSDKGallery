@@ -35,7 +35,7 @@
     <None Remove="SamplePages\AppLifecycle\ManageInstancesPage.xaml" />
     <None Remove="SamplePages\AppLifecycle\PowerManagerPage.xaml" />
     <None Remove="SamplePages\AppWindowSamples\BasicAppWindowSamples.xaml" />
-    <None Remove="SamplePages\CredentialLockerSamples\CredentialLockerPage.xaml" />
+    <None Remove="SamplePages\AuthSamples\CredentialLockerPage.xaml" />
     <None Remove="SamplePages\MediaSamples\PlayVideosPage.xaml" />
   </ItemGroup>
 

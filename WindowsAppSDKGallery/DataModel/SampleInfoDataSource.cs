@@ -135,7 +135,7 @@ namespace WindowsAppSDKGallery.DataModel
                     new SampleInfoDataItem
                     {
                         Title = "Credential locker",
-                        PageType = typeof(SamplePages.CredentialLockerSamples.CredentialLockerPage)
+                        PageType = typeof(SamplePages.AuthSamples.CredentialLockerPage)
                     }
                 }
             }
