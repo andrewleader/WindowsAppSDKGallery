@@ -125,7 +125,7 @@ jobs:
         draft: false
         prerelease: false
         name: '0.${{ github.run_number }}.${{ github.run_attempt }}.0'
-        tag_name: ${{ github.ref }}
+        tag_name: 'v0.${{ github.run_number }}.${{ github.run_attempt }}.0'
         body: 'Version 0.${{ github.run_number }}.${{ github.run_attempt }}.0'
         files: WindowsAppSDKGallery/Packages/**/WindowsAppSDKGallery*.msix
         fail_on_unmatched_files: true
