@@ -138,6 +138,19 @@ namespace WindowsAppSDKGallery.DataModel
                         PageType = typeof(SamplePages.AuthSamples.CredentialLockerPage)
                     }
                 }
+            },
+
+            new SampleInfoDataGroup
+            {
+                Title = "Share",
+                Items =
+                {
+                    new SampleInfoDataItem
+                    {
+                        Title = "DataTransferManager",
+                        PageType = typeof(SamplePages.ShareSamples.DataTransferManagerPage)
+                    }
+                }
             }
         };
     }
