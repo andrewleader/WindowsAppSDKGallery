@@ -37,6 +37,7 @@
     <None Remove="SamplePages\AppWindowSamples\BasicAppWindowSamples.xaml" />
     <None Remove="SamplePages\AuthSamples\CredentialLockerPage.xaml" />
     <None Remove="SamplePages\MediaSamples\PlayVideosPage.xaml" />
+    <None Remove="SamplePages\ShareSamples\DataTransferManagerPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -143,6 +144,12 @@
 
   <ItemGroup>
     <Page Update="SamplePages\CredentialLockerSamples\CredentialLockerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="SamplePages\ShareSamples\DataTransferManagerPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
