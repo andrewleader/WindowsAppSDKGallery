@@ -131,16 +131,16 @@ jobs:
         Configuration: ${{ matrix.configuration }}
         
     - name: Create ZIP of unpackaged app
-      uses: thedoctor0/zip-release@master
+      uses: papeloto/action-zip@v1
       with:
-        type: 'zip'
-        filename: 'WindowsAppSDK-unpackaged-0.${{ github.run_number }}.${{ github.run_attempt }}.0.zip'
-        path: WindowsAppSDKGallery/bin/x64/Release/net5.0-windows10.0.19041.0/publish
+        dest: 'WindowsAppSDK-unpackaged-0.${{ github.run_number }}.${{ github.run_attempt }}.0.zip'
+        files: WindowsAppSDKGallery/bin/x64/Release/net5.0-windows10.0.19041.0/publish/
+        recursive: false
         
     - name: Upload unpackaged app
       uses: actions/upload-artifact@v2
       with:
-        name: Unpackaged app
+        name: 'Unpackaged app'
         path: 'WindowsAppSDK-unpackaged-0.${{ github.run_number }}.${{ github.run_attempt }}.0.zip'
         
 
