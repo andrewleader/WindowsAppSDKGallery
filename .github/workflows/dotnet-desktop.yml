@@ -122,26 +122,31 @@ jobs:
         
         
     # Create the unpackaged app
-    - name: Create unpackaged app
+    - name: Build unpackaged app
       run: msbuild $env:Solution_Name /t:Publish /p:WindowsPackageType=None /p:Configuration=$env:Configuration /p:Platform=x64
       env:
         Configuration: ${{ matrix.configuration }}
         
-    - name: Upload unpackaged artifacts
+    - name: Create ZIP of unpackaged app
+      run: Compress-Archive WindowsAppSDKGallery/bin/x64/Release/net5.0-windows10.0.19041.0/publish/* 'WindowsAppSDK-unpackaged-0.${{ github.run_number }}.${{ github.run_attempt }}.0.zip'
+        
+    - name: Upload unpackaged app
       uses: actions/upload-artifact@v2
       with:
-        name: Unpackaged app
-        path: WindowsAppSDKGallery/**/net5.0-windows10.0.19041.0/publish
+        name: 'Unpackaged app'
+        path: 'WindowsAppSDK-unpackaged-0.${{ github.run_number }}.${{ github.run_attempt }}.0.zip'
         
 
     - name: Create GH release
-      if: ${{ github.ref_name }} == 'main'
+      if: github.ref_name == 'main'
       uses: softprops/action-gh-release@v1
       with:
         draft: false
         prerelease: false
         name: '0.${{ github.run_number }}.${{ github.run_attempt }}.0'
         tag_name: 'v0.${{ github.run_number }}.${{ github.run_attempt }}.0'
-        body: 'Version 0.${{ github.run_number }}.${{ github.run_attempt }}.0'
-        files: WindowsAppSDKGallery/Packages/**/WindowsAppSDKGallery*.msix
+        body: 'To install the MSIX version, you first have to add the certificate included in the MSIX (only need to do that once). To install the unpackaged version, you need to install the x64 WinAppRuntime Installer.'
+        files: |
+          WindowsAppSDKGallery/Packages/**/WindowsAppSDKGallery*.msix
+          'WindowsAppSDK-unpackaged-0.${{ github.run_number }}.${{ github.run_attempt }}.0.zip'
         fail_on_unmatched_files: true
