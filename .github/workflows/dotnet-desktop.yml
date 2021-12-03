@@ -131,11 +131,7 @@ jobs:
         Configuration: ${{ matrix.configuration }}
         
     - name: Create ZIP of unpackaged app
-      uses: papeloto/action-zip@v1
-      with:
-        dest: 'WindowsAppSDK-unpackaged-0.${{ github.run_number }}.${{ github.run_attempt }}.0.zip'
-        files: WindowsAppSDKGallery/bin/x64/Release/net5.0-windows10.0.19041.0/publish/
-        recursive: false
+      run: Compress-Archive WindowsAppSDKGallery/bin/x64/Release/net5.0-windows10.0.19041.0/publish/* 'WindowsAppSDK-unpackaged-0.${{ github.run_number }}.${{ github.run_attempt }}.0.zip'
         
     - name: Upload unpackaged app
       uses: actions/upload-artifact@v2
@@ -153,5 +149,7 @@ jobs:
         name: '0.${{ github.run_number }}.${{ github.run_attempt }}.0'
         tag_name: 'v0.${{ github.run_number }}.${{ github.run_attempt }}.0'
         body: 'Version 0.${{ github.run_number }}.${{ github.run_attempt }}.0'
-        files: WindowsAppSDKGallery/Packages/**/WindowsAppSDKGallery*.msix
+        files: |
+          WindowsAppSDKGallery/Packages/**/WindowsAppSDKGallery*.msix
+          'WindowsAppSDK-unpackaged-0.${{ github.run_number }}.${{ github.run_attempt }}.0.zip'
         fail_on_unmatched_files: true
