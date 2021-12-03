@@ -118,8 +118,23 @@ jobs:
         name: MSIX Package
         path: WindowsAppSDKGallery/Packages/**/WindowsAppSDKGallery*.msix
         
+        
+        
+    # Create the unpackaged app
+    - name: Create unpackaged app
+      run: msbuild $env:Solution_Name /t:Publish /p:WindowsPackageType=None /p:Configuration=$env:Configuration /p:Platform=x64
+      env:
+        Configuration: ${{ matrix.configuration }}
+        
+    - name: Upload unpackaged artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: Unpackaged app
+        path: WindowsAppSDKGallery/**/net5.0-windows10.0.19041.0/publish
+        
 
     - name: Create GH release
+      if: ${{ github.ref_name }} == 'main'
       uses: softprops/action-gh-release@v1
       with:
         draft: false
