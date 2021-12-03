@@ -123,6 +123,12 @@ namespace WindowsAppSDKGallery.DataModel
                     {
                         Title = "Play videos",
                         PageType = typeof(SamplePages.MediaSamples.PlayVideosPage)
+                    },
+
+                    new SampleInfoDataItem
+                    {
+                        Title = "Play sounds",
+                        PageType = typeof(SamplePages.MediaSamples.PlaySoundsPage)
                     }
                 }
             },
