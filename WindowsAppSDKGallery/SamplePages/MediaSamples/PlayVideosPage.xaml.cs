@@ -12,6 +12,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using WindowsAppSDKGallery.Helpers;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -37,7 +38,7 @@ namespace WindowsAppSDKGallery.SamplePages.MediaSamples
                 await WebViewForVideo.EnsureCoreWebView2Async();
 
                 // To access local files: https://github.com/MicrosoftEdge/WebView2Feedback/issues/642 need WebView2 1.0.707-prerelease
-                var assetsFolderPath = Path.Join(Windows.ApplicationModel.Package.Current.InstalledLocation.Path, "Assets");
+                var assetsFolderPath = AssetsHelper.GetAssetsFolder();
                 WebViewForVideo.CoreWebView2.SetVirtualHostNameToFolderMapping("LocalAssets", assetsFolderPath, Microsoft.Web.WebView2.Core.CoreWebView2HostResourceAccessKind.Allow);
 
                 string src = "http://LocalAssets/AdaptiveIntroVideo.mp4";

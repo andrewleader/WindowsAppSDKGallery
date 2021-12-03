@@ -59,6 +59,16 @@
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
+  <!--For unpackaged, we have to copy the assets to the output directory so we can access them-->
+  <ItemGroup Condition="'$(WindowsPackageType)' == 'None'">
+    <Content Update="Assets\AdaptiveIntroVideo.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\chimes.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
   <ItemGroup>
     <Page Update="SamplePages\MediaSamples\PlaySoundsPage.xaml">
       <Generator>MSBuild:Compile</Generator>

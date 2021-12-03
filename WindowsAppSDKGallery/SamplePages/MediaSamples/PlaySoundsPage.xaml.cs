@@ -13,6 +13,7 @@ using System.Media;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using WindowsAppSDKGallery.Helpers;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -31,7 +32,7 @@ namespace WindowsAppSDKGallery.SamplePages.MediaSamples
 
         private void PlaySound_ExecuteApi(object sender, Controls.ExecuteApiArgs e)
         {
-            var file = Path.Join(Windows.ApplicationModel.Package.Current.InstalledLocation.Path, "Assets", "chimes.wav");
+            var file = AssetsHelper.GetAsset("chimes.wav");
 
             new SoundPlayer(file).Play();
         }
