@@ -36,6 +36,7 @@ namespace WindowsAppSDKGallery.SamplePages.AppWindowSamples
 
             try
             {
+                // Requires a workaround in app.manifest due to bug https://github.com/microsoft/WindowsAppSDK/issues/1815
                 IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(App.Window);
                 WindowId myWndId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
                 _appWindow = AppWindow.GetFromWindowId(myWndId);
