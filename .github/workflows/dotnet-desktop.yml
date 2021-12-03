@@ -122,20 +122,27 @@ jobs:
         
         
     # Create the unpackaged app
-    - name: Create unpackaged app
+    - name: Build unpackaged app
       run: msbuild $env:Solution_Name /t:Publish /p:WindowsPackageType=None /p:Configuration=$env:Configuration /p:Platform=x64
       env:
         Configuration: ${{ matrix.configuration }}
         
-    - name: Upload unpackaged artifacts
+    - name: Create ZIP of unpackaged app
+      uses: thedoctor0/zip-release@master
+      with:
+        type: 'zip'
+        filename: 'WindowsAppSDK-unpackaged-0.${{ github.run_number }}.${{ github.run_attempt }}.0.zip'
+        path: WindowsAppSDKGallery/**/net5.0-windows10.0.19041.0/publish
+        
+    - name: Upload unpackaged app
       uses: actions/upload-artifact@v2
       with:
         name: Unpackaged app
-        path: WindowsAppSDKGallery/**/net5.0-windows10.0.19041.0/publish
+        path: 'WindowsAppSDK-unpackaged-0.${{ github.run_number }}.${{ github.run_attempt }}.0.zip'
         
 
     - name: Create GH release
-      if: ${{ github.ref_name }} == 'main'
+      if: github.ref_name == 'main'
       uses: softprops/action-gh-release@v1
       with:
         draft: false
