@@ -37,8 +37,8 @@ namespace WindowsAppSDKGallery.SamplePages.MediaSamples
                 await WebViewForVideo.EnsureCoreWebView2Async();
 
                 // To access local files: https://github.com/MicrosoftEdge/WebView2Feedback/issues/642 need WebView2 1.0.707-prerelease
-                var assetsFolder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
-                WebViewForVideo.CoreWebView2.SetVirtualHostNameToFolderMapping("LocalAssets", assetsFolder.Path, Microsoft.Web.WebView2.Core.CoreWebView2HostResourceAccessKind.Allow);
+                var assetsFolderPath = Path.Join(Windows.ApplicationModel.Package.Current.InstalledLocation.Path, "Assets");
+                WebViewForVideo.CoreWebView2.SetVirtualHostNameToFolderMapping("LocalAssets", assetsFolderPath, Microsoft.Web.WebView2.Core.CoreWebView2HostResourceAccessKind.Allow);
 
                 string src = "http://LocalAssets/AdaptiveIntroVideo.mp4";
 
