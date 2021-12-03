@@ -1,7 +1,10 @@
 {
   "profiles": {
-    "WindowsAppSDKGallery": {
+    "WindowsAppSDKGallery (Package)": {
       "commandName": "MsixPackage"
+    },
+    "WindowsAppSDKGallery (Unpackaged)": {
+      "commandName": "Project"
     }
   }
 }
