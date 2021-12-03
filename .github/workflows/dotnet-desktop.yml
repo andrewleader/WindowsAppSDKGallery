@@ -93,6 +93,7 @@ jobs:
 
     # Decode the base 64 encoded pfx and save the Signing_Certificate
     - name: Decode the pfx
+      if: github.ref_name != 'unpackaged'
       run: |
         $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.Base64_Encoded_Pfx }}")
         $certificatePath = Join-Path -Path $env:Project_Directory -ChildPath WindowsAppSDKGallery_TemporaryKey.pfx
@@ -100,6 +101,7 @@ jobs:
 
     # Create the app package by building and packaging the Windows Application Packaging project
     - name: Create the app package
+      if: github.ref_name != 'unpackaged'
       run: msbuild $env:Solution_Name /p:AppxBundlePlatforms="$env:Appx_Bundle_Platforms" /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:PackageCertificateKeyFile=WindowsAppSDKGallery_TemporaryKey.pfx /p:AppxPackageDir="$env:Appx_Package_Dir" /p:GenerateAppxPackageOnBuild=true
       env:
         Appx_Bundle: Never
@@ -114,6 +116,7 @@ jobs:
 
     # Upload the MSIX package: https://github.com/marketplace/actions/upload-a-build-artifact
     - name: Upload build artifacts
+      if: github.ref_name != 'unpackaged'
       uses: actions/upload-artifact@v2
       with:
         name: MSIX Package
@@ -132,7 +135,7 @@ jobs:
       with:
         type: 'zip'
         filename: 'WindowsAppSDK-unpackaged-0.${{ github.run_number }}.${{ github.run_attempt }}.0.zip'
-        path: WindowsAppSDKGallery/**/net5.0-windows10.0.19041.0/publish
+        path: WindowsAppSDKGallery/bin/x64/Release/net5.0-windows10.0.19041.0/publish
         
     - name: Upload unpackaged app
       uses: actions/upload-artifact@v2
