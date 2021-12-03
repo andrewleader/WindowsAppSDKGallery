@@ -37,6 +37,7 @@
     <None Remove="SamplePages\AppLifecycle\PowerManagerPage.xaml" />
     <None Remove="SamplePages\AppWindowSamples\BasicAppWindowSamples.xaml" />
     <None Remove="SamplePages\AuthSamples\CredentialLockerPage.xaml" />
+    <None Remove="SamplePages\DialogSamples\MessageDialogPage.xaml" />
     <None Remove="SamplePages\MediaSamples\PlaySoundsPage.xaml" />
     <None Remove="SamplePages\MediaSamples\PlayVideosPage.xaml" />
     <None Remove="SamplePages\ShareSamples\DataTransferManagerPage.xaml" />
@@ -159,6 +160,12 @@
 
   <ItemGroup>
     <Page Update="SamplePages\ShareSamples\DataTransferManagerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="SamplePages\DialogSamples\MessageDialogPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

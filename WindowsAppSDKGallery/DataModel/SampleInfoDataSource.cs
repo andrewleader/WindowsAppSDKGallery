@@ -91,6 +91,19 @@ namespace WindowsAppSDKGallery.DataModel
 
             new SampleInfoDataGroup
             {
+                Title = "Dialogs",
+                Items =
+                {
+                    new SampleInfoDataItem
+                    {
+                        Title = "MessageDialog",
+                        PageType = typeof(SamplePages.DialogSamples.MessageDialogPage)
+                    }
+                }
+            },
+
+            new SampleInfoDataGroup
+            {
                 Title = "App lifecycle",
                 Items =
                 {

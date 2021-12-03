@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="WindowsAppSDKGallery.SamplePages.DialogSamples.MessageDialogPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WindowsAppSDKGallery.SamplePages.DialogSamples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:WindowsAppSDKGallery.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel>
+
+        <controls:ApiExample
+            HeaderText="Content-only dialog"
+            x:Name="ContentOnly"
+            Api="new MessageDialog($content).ShowAsync();"
+            ExecuteApi="ContentOnly_ExecuteApi"/>
+
+        <controls:ApiExample
+            HeaderText="Title and content dialog"
+            x:Name="TitleAndContent"
+            Api="new MessageDialog($content, $title).ShowAsync();"
+            ExecuteApi="TitleAndContent_ExecuteApi"/>
+
+    </StackPanel>
+</Page>
