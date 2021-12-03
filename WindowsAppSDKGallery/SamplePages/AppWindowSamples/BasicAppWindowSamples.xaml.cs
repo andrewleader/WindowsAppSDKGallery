@@ -15,6 +15,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics;
+using Windows.UI.Popups;
+using WindowsAppSDKGallery.Helpers;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -32,9 +34,17 @@ namespace WindowsAppSDKGallery.SamplePages.AppWindowSamples
         {
             this.InitializeComponent();
 
-            IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(App.Window);
-            WindowId myWndId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
-            _appWindow = AppWindow.GetFromWindowId(myWndId);
+            try
+            {
+                IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(App.Window);
+                WindowId myWndId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
+                _appWindow = AppWindow.GetFromWindowId(myWndId);
+            }
+            catch (Exception ex)
+            {
+                IsEnabled = false;
+                _ = new MessageDialog(ex.ToString(), "Error initializing AppWindow").ShowOverCurrentWindowAsync();
+            }
         }
 
         private void MoveWindow_ExecuteApi(object sender, Controls.ExecuteApiArgs e)
