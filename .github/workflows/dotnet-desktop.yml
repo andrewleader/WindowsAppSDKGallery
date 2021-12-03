@@ -148,5 +148,5 @@ jobs:
         body: 'To install the MSIX version, you first have to add the certificate included in the MSIX (only need to do that once). To install the unpackaged version, you need to install the x64 WinAppRuntime Installer.'
         files: |
           WindowsAppSDKGallery/Packages/**/WindowsAppSDKGallery*.msix
-          WindowsAppSDKGallery-unpackaged-*.zip'
+          WindowsAppSDKGallery-unpackaged-*.zip
         fail_on_unmatched_files: true
