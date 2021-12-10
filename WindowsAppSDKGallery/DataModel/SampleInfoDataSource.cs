@@ -148,6 +148,19 @@ namespace WindowsAppSDKGallery.DataModel
 
             new SampleInfoDataGroup
             {
+                Title = "Notifications",
+                Items =
+                {
+                    new SampleInfoDataItem
+                    {
+                        Title = "Toast notifications",
+                        PageType = typeof(SamplePages.NotificationsSamples.ToastNotificationPage)
+                    }
+                }
+            },
+
+            new SampleInfoDataGroup
+            {
                 Title = "Auth & user identity",
                 Items =
                 {

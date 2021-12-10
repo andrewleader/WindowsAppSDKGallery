@@ -73,5 +73,25 @@ namespace WindowsAppSDKGallery
             NavigationViewControl.Header = "Select a sample on the left.";
             rootFrame.Visibility = Visibility.Collapsed;
         }
+
+        public void OpenSample(Type pageType)
+        {
+            var sampleItem = SampleInfoDataSource.Groups.SelectMany(i => i.Items).FirstOrDefault(i => i.PageType == pageType);
+
+            if (sampleItem != null)
+            {
+                foreach (var group in NavigationViewControl.MenuItems.OfType<NavigationViewItem>())
+                {
+                    foreach (var item in group.MenuItems.OfType<NavigationViewItem>())
+                    {
+                        if (item.DataContext == sampleItem)
+                        {
+                            NavigationViewControl.SelectedItem = item;
+                            return;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
