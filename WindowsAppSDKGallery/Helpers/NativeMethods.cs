@@ -11,5 +11,13 @@ namespace WindowsAppSDKGallery.Helpers
     {
         [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         internal static extern int GetCurrentPackageFullName(ref int packageFullNameLength, StringBuilder packageFullName);
+
+        [DllImport("ole32.dll")]
+        internal static extern int CoRegisterClassObject(
+            [MarshalAs(UnmanagedType.LPStruct)] Guid rclsid,
+            [MarshalAs(UnmanagedType.IUnknown)] object pUnk,
+            uint dwClsContext,
+            uint flags,
+            out uint lpdwRegister);
     }
 }

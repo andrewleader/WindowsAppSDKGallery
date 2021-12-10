@@ -170,6 +170,19 @@ namespace WindowsAppSDKGallery.DataModel
                         PageType = typeof(SamplePages.ShareSamples.DataTransferManagerPage)
                     }
                 }
+            },
+
+            new SampleInfoDataGroup
+            {
+                Title = "Background tasks",
+                Items =
+                {
+                    new SampleInfoDataItem
+                    {
+                        Title = "InternetAvailable",
+                        PageType = typeof(SamplePages.BackgroundTaskSamples.InternetAvailablePage)
+                    }
+                }
             }
         };
     }

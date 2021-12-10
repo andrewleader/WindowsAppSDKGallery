@@ -37,6 +37,7 @@
     <None Remove="SamplePages\AppLifecycle\PowerManagerPage.xaml" />
     <None Remove="SamplePages\AppWindowSamples\BasicAppWindowSamples.xaml" />
     <None Remove="SamplePages\AuthSamples\CredentialLockerPage.xaml" />
+    <None Remove="SamplePages\BackgroundTaskSamples\InternetAvailablePage.xaml" />
     <None Remove="SamplePages\DialogSamples\MessageDialogPage.xaml" />
     <None Remove="SamplePages\MediaSamples\PlaySoundsPage.xaml" />
     <None Remove="SamplePages\MediaSamples\PlayVideosPage.xaml" />
@@ -179,6 +180,11 @@
        Tools extension to be activated for this project even if the Windows App SDK Nuget
        package has not yet been restored -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnablePreviewMsixTooling)'=='true'">
-    <ProjectCapability Include="Msix"/>
+    <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="SamplePages\BackgroundTaskSamples\InternetAvailablePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

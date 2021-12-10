@@ -43,6 +43,8 @@ namespace WindowsAppSDKGallery.SamplePages.AppLifecycle
 
             var instance = AppInstance.FindOrRegisterForKey(key);
             FindInstance.ReturnedObject = instance;
+
+
         }
     }
 }
