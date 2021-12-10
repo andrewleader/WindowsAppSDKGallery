@@ -40,6 +40,7 @@
     <None Remove="SamplePages\DialogSamples\MessageDialogPage.xaml" />
     <None Remove="SamplePages\MediaSamples\PlaySoundsPage.xaml" />
     <None Remove="SamplePages\MediaSamples\PlayVideosPage.xaml" />
+    <None Remove="SamplePages\NotificationsSamples\ToastNotificationPage.xaml" />
     <None Remove="SamplePages\ShareSamples\DataTransferManagerPage.xaml" />
   </ItemGroup>
 
@@ -54,6 +55,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.2" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
     <PackageReference Include="System.Windows.Extensions" Version="6.0.0" />
     <Manifest Include="$(ApplicationManifest)" />
@@ -179,6 +181,11 @@
        Tools extension to be activated for this project even if the Windows App SDK Nuget
        package has not yet been restored -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnablePreviewMsixTooling)'=='true'">
-    <ProjectCapability Include="Msix"/>
+    <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="SamplePages\NotificationsSamples\ToastNotificationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>
