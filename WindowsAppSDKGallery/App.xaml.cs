@@ -43,22 +43,10 @@ namespace WindowsAppSDKGallery
         {
             NativeMethods.CoRegisterClassObject(
                 typeof(SamplePages.BackgroundTaskSamples.InternetAvailableBackgroundTask).GUID,
-                new BackgroundClassFactory(null),
+                new BasicClassFactory<SamplePages.BackgroundTaskSamples.InternetAvailableBackgroundTask>(),
                 CLSCTX_LOCAL_SERVER,
                 REGCLS_MULTIPLEUSE,
                 out _);
-        }
-
-        [ComImport]
-        [Guid("00000001-0000-0000-C000-000000000046")]
-        [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-        private interface IClassFactory
-        {
-            [PreserveSig]
-            int CreateInstance(IntPtr pUnkOuter, ref Guid riid, out IntPtr ppvObject);
-
-            [PreserveSig]
-            int LockServer(bool fLock);
         }
 
         private const int CLASS_E_NOAGGREGATION = -2147221232;
@@ -67,49 +55,6 @@ namespace WindowsAppSDKGallery
         private const int CLSCTX_LOCAL_SERVER = 4;
         private const int REGCLS_MULTIPLEUSE = 1;
         private static readonly Guid IUnknownGuid = new Guid("00000000-0000-0000-C000-000000000046");
-
-        private class BackgroundClassFactory : IClassFactory
-        {
-            private Type _activatorType;
-
-            public BackgroundClassFactory(Type activatorType)
-            {
-                _activatorType = activatorType;
-            }
-
-            public int CreateInstance(IntPtr pUnkOuter, ref Guid riid, out IntPtr ppvObject)
-            {
-                ppvObject = IntPtr.Zero;
-
-                if (pUnkOuter != IntPtr.Zero)
-                {
-                    Marshal.ThrowExceptionForHR(CLASS_E_NOAGGREGATION);
-                }
-
-                if (riid == IUnknownGuid)
-                {
-                    // Create the instance of the .NET object
-                    ppvObject = Marshal.GetIUnknownForObject(new SamplePages.BackgroundTaskSamples.InternetAvailableBackgroundTask());
-                    //ppvObject = Marshal.GetComInterfaceForObject(
-                    //    Activator.CreateInstance(typeof(SamplePages.BackgroundTaskSamples.InternetAvailableBackgroundTask)),
-                    //    typeof(Windows.ApplicationModel.Background.IBackgroundTask));
-                }
-                else
-                {
-                    // The object that ppvObject points to does not support the
-                    // interface identified by riid.
-                    Marshal.ThrowExceptionForHR(E_NOINTERFACE);
-                }
-
-                return S_OK;
-            }
-
-            public int LockServer(bool fLock)
-            {
-                return S_OK;
-            }
-        }
-
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
