@@ -15,6 +15,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics;
+using Windows.Storage;
 using Windows.UI.Popups;
 using WindowsAppSDKGallery.Helpers;
 
@@ -64,6 +65,23 @@ namespace WindowsAppSDKGallery.SamplePages.AppWindowSamples
             int.TryParse(e.Parameters["height"], out height);
 
             _appWindow.Resize(new SizeInt32(width, height));
+        }
+
+        private void SetWindowIcon_ExecuteApi(object sender, Controls.ExecuteApiArgs e)
+        {
+            string path = e.Parameters["icoPath"];
+
+            if (!File.Exists(path))
+            {
+                _ = new MessageDialog("Your specified icon doesn't exist. Check your file path.").ShowOverCurrentWindowAsync();
+            }
+
+            if (!path.EndsWith(".ico"))
+            {
+                _ = new MessageDialog("The icon must be a .ico file.").ShowOverCurrentWindowAsync();
+            }
+
+            _appWindow.SetIcon(path);
         }
     }
 }

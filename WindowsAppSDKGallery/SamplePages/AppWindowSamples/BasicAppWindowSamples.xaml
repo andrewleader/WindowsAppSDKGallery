@@ -23,5 +23,11 @@
             Api="appWindow.Resize(new SizeInt32($width, $height))"
             ExecuteApi="ResizeWindow_ExecuteApi"/>
 
+        <controls:ApiExample
+            x:Name="SetWindowIcon"
+            HeaderText="Set window icon (specify a full .ico path)"
+            Api="appWindow.SetIcon($icoPath)"
+            ExecuteApi="SetWindowIcon_ExecuteApi"/>
+
     </StackPanel>
 </Page>
