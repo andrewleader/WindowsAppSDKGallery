@@ -29,7 +29,12 @@ namespace WindowsAppSDKGallery.Helpers
 
         public static AppWindow GetAppWindowForCurrentWindow()
         {
-            IntPtr hWnd = GetHwndForCurrentWindow();
+            return GetAppWindow(App.Window);
+        }
+
+        public static AppWindow GetAppWindow(Window window)
+        {
+            IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
             WindowId myWndId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
             return AppWindow.GetFromWindowId(myWndId);
         }

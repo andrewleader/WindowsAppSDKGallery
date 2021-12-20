@@ -23,6 +23,7 @@
   <ItemGroup>
     <None Remove="Assets\AdaptiveIntroVideo.mp4" />
     <None Remove="Assets\chimes.wav" />
+    <None Remove="Assets\Icon.ico" />
     <None Remove="Controls\ApiExample.xaml" />
     <None Remove="Controls\ObjectControl.xaml" />
     <None Remove="Controls\ObjectControlHelpers\BaseObjectControl.xaml" />
@@ -50,7 +51,6 @@
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
 
@@ -67,6 +67,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\chimes.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

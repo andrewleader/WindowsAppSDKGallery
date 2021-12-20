@@ -14,6 +14,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using WindowsAppSDKGallery.DataModel;
+using WindowsAppSDKGallery.Helpers;
 using WindowsAppSDKGallery.Pages;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -30,8 +31,16 @@ namespace WindowsAppSDKGallery
         {
             this.InitializeComponent();
 
+            Title = "Windows App SDK Gallery";
+
             AddNavigationMenuItems();
             SetUnselected();
+            UpdateWindowIcon();
+        }
+
+        private void UpdateWindowIcon()
+        {
+            WindowHelper.GetAppWindow(this).SetIcon(AssetsHelper.GetAsset("Icon.ico"));
         }
 
         private void AddNavigationMenuItems()
